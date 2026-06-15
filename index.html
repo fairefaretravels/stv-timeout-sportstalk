@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Media Release & Consent — SANECA TV</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#07090a;
+  --surface:#0f1314;
+  --surface2:#161b1d;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.13);
+  --text:#eef0f2;
+  --muted:#6a7580;
+  --dim:#3a4248;
+  --gold:#c9a84c;
+  --gold-light:#e8c96a;
+  --gold-bg:rgba(201,168,76,0.08);
+  --gold-border:rgba(201,168,76,0.25);
+  --green:#3fb950;
+  --green-bg:rgba(63,185,80,0.08);
+  --green-border:rgba(63,185,80,0.25);
+  --red:#f85149;
+  --red-bg:rgba(248,81,73,0.08);
+  --red-border:rgba(248,81,73,0.25);
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  min-height:100vh;
+}
+
+/* ── LANDING ── */
+#landing{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:48px 24px;
+  text-align:center;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 70%);
+}
+.brand-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:32px;
+}
+.brand-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--gold);
+  box-shadow:0 0 10px rgba(201,168,76,0.5);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.brand-name{
+  font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+}
+.landing-eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+}
+.landing-title{
+  font-size:clamp(28px,6vw,48px);font-weight:800;letter-spacing:-.03em;
+  line-height:1.15;margin-bottom:16px;
+}
+.landing-title em{color:var(--gold);font-style:normal;}
+.landing-sub{
+  font-size:15px;color:var(--muted);line-height:1.7;max-width:480px;margin:0 auto 36px;
+}
+.open-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--gold);color:#07090a;
+  border:none;border-radius:12px;
+  padding:16px 32px;font-size:15px;font-weight:800;
+  cursor:pointer;transition:all .2s;letter-spacing:-.01em;
+}
+.open-btn:hover{background:var(--gold-light);transform:translateY(-1px);}
+.open-btn:active{transform:scale(.97);}
+.open-btn svg{width:18px;height:18px;}
+.landing-note{margin-top:20px;font-size:12px;color:var(--dim);}
+
+/* ── MODAL OVERLAY ── */
+#modal-overlay{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.85);
+  z-index:100;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+#modal-overlay.open{display:block;}
+
+#modal{
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-radius:20px;
+  max-width:680px;
+  margin:40px auto;
+  overflow:hidden;
+  position:relative;
+}
+@media(max-width:720px){
+  #modal{margin:0;border-radius:0;min-height:100vh;border:none;}
+}
+
+.modal-header{
+  padding:24px 28px 20px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  position:sticky;top:0;background:var(--surface);z-index:10;
+}
+.modal-header-left{}
+.modal-title{font-size:16px;font-weight:700;color:var(--text);}
+.modal-sub{font-size:12px;color:var(--muted);margin-top:3px;}
+.close-btn{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--surface2);border:1px solid var(--border);
+  color:var(--muted);font-size:18px;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:all .15s;
+}
+.close-btn:hover{background:var(--red-bg);border-color:var(--red-border);color:var(--red);}
+
+.scroll-hint{
+  background:var(--gold-bg);border-bottom:1px solid var(--gold-border);
+  padding:10px 28px;font-size:12px;color:var(--gold);
+  display:flex;align-items:center;gap:8px;
+}
+
+/* ── WAIVER TEXT ── */
+.waiver-body{
+  padding:28px 28px 0;
+  max-height:55vh;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+@media(max-width:720px){.waiver-body{max-height:none;}}
+
+.waiver-logo{
+  text-align:center;margin-bottom:24px;padding-bottom:24px;
+  border-bottom:1px solid var(--border);
+}
+.waiver-logo-name{
+  font-size:22px;font-weight:900;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gold);
+}
+.waiver-logo-sub{font-size:11px;color:var(--muted);letter-spacing:.1em;margin-top:4px;}
+
+.waiver-doc-title{
+  font-size:18px;font-weight:800;text-align:center;
+  margin-bottom:6px;letter-spacing:-.01em;
+}
+.waiver-doc-sub{
+  font-size:12px;color:var(--muted);text-align:center;margin-bottom:28px;
+}
+
+.waiver-section{margin-bottom:22px;}
+.waiver-section-num{
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:6px;
+}
+.waiver-section h3{
+  font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;
+}
+.waiver-section p{
+  font-size:13px;color:#8a9aa8;line-height:1.75;
+}
+.waiver-section p+p{margin-top:8px;}
+
+.waiver-divider{
+  border:none;border-top:1px solid var(--border);margin:24px 0;
+}
+
+/* ── CONSENT ZONE (only shows after scroll) ── */
+#consent-zone{
+  padding:24px 28px 28px;
+  border-top:1px solid var(--border);
+  opacity:0;pointer-events:none;
+  transition:opacity .4s;
+}
+#consent-zone.visible{opacity:1;pointer-events:all;}
+
+.consent-header{
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:16px;
+}
+
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+@media(max-width:480px){.choice-grid{grid-template-columns:1fr;}}
+
+.choice-card{
+  border-radius:12px;padding:16px;cursor:pointer;
+  border:2px solid var(--border);background:var(--surface2);
+  transition:all .2s;user-select:none;
+}
+.choice-card:hover{border-color:var(--border2);}
+.choice-card.selected-agree{
+  border-color:#3fb950;background:var(--green-bg);
+}
+.choice-card.selected-decline{
+  border-color:var(--red);background:var(--red-bg);
+}
+.choice-radio{
+  width:20px;height:20px;border-radius:50%;
+  border:2px solid var(--dim);
+  margin-bottom:10px;display:flex;align-items:center;justify-content:center;
+  font-size:11px;transition:all .2s;
+}
+.selected-agree .choice-radio{background:#3fb950;border-color:#3fb950;color:#07090a;}
+.selected-decline .choice-radio{background:var(--red);border-color:var(--red);color:#fff;}
+.choice-label{font-size:14px;font-weight:700;margin-bottom:4px;}
+.choice-desc{font-size:11px;color:var(--muted);line-height:1.5;}
+.selected-agree .choice-label{color:#3fb950;}
+.selected-decline .choice-label{color:var(--red);}
+
+/* Name field */
+.field-group{margin-bottom:16px;}
+.field-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block;}
+.field-input{
+  width:100%;background:var(--surface2);border:1px solid var(--border2);
+  border-radius:10px;padding:13px 16px;color:var(--text);font-size:14px;
+  font-family:inherit;outline:none;transition:border-color .15s;
+}
+.field-input:focus{border-color:var(--gold);}
+.field-input::placeholder{color:var(--dim);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:480px){.field-row{grid-template-columns:1fr;}}
+
+.notes-area{
+  width:100%;background:var(--surface2);border:1px solid var(--border2);
+  border-radius:10px;padding:13px 16px;color:var(--text);font-size:13px;
+  font-family:inherit;outline:none;transition:border-color .15s;
+  resize:vertical;min-height:80px;
+}
+.notes-area:focus{border-color:var(--gold);}
+
+.submit-btn{
+  width:100%;padding:15px;border:none;border-radius:12px;
+  font-size:15px;font-weight:800;cursor:pointer;
+  transition:all .2s;letter-spacing:-.01em;
+  background:var(--dim);color:var(--muted);
+  pointer-events:none;
+}
+.submit-btn.ready-agree{background:var(--gold);color:#07090a;pointer-events:all;}
+.submit-btn.ready-agree:hover{background:var(--gold-light);}
+.submit-btn.ready-decline{background:var(--red);color:#fff;pointer-events:all;}
+.submit-btn.ready-decline:hover{filter:brightness(1.1);}
+.submit-btn.sending{background:var(--surface2);color:var(--muted);pointer-events:none;}
+
+.err-bar{
+  display:none;background:var(--red-bg);border:1px solid var(--red-border);
+  border-radius:8px;padding:10px 14px;font-size:12px;color:var(--red);margin-top:12px;
+}
+.err-bar.visible{display:block;}
+
+/* ── SUCCESS ── */
+#success-screen{
+  display:none;flex-direction:column;align-items:center;
+  padding:60px 32px;text-align:center;
+}
+#success-screen.visible{display:flex;}
+.success-icon{
+  width:72px;height:72px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:30px;
+  margin-bottom:24px;
+}
+.success-icon.agreed{background:var(--green-bg);border:2px solid var(--green-border);}
+.success-icon.declined{background:var(--red-bg);border:2px solid var(--red-border);}
+#success-screen h2{font-size:24px;font-weight:800;margin-bottom:10px;}
+#success-screen p{font-size:14px;color:var(--muted);max-width:360px;line-height:1.65;}
+.flag-notice{
+  margin-top:20px;background:var(--red-bg);border:1px solid var(--red-border);
+  border-radius:10px;padding:14px 18px;font-size:13px;color:var(--red);
+  max-width:400px;line-height:1.6;
+}
+.flag-name{
+  font-size:18px;font-weight:800;color:var(--red);margin-top:8px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+</style>
+</head>
+<body>
+
+<!-- ── LANDING PAGE ── -->
+<section id="landing">
+  <div class="brand-row">
+    <div class="brand-dot"></div>
+    <div class="brand-name">SANECA TV LLC</div>
+  </div>
+  <div class="landing-eyebrow">Media Release & Consent</div>
+  <h1 class="landing-title">Before We Go <em>Live.</em></h1>
+  <p class="landing-sub">
+    We need your signature before we can air, publish, or share any audio or video from today's session. This takes less than two minutes — read through, make your choice, and you're done.
+  </p>
+  <button class="open-btn" onclick="openModal()">
+    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v4.59L7.3 9.24a.75.75 0 00-1.1 1.02l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75z" clip-rule="evenodd"/></svg>
+    Read & Sign Waiver
+  </button>
+  <p class="landing-note">Your response is sent directly to the STV team.</p>
+</section>
+
+<!-- ── MODAL ── -->
+<div id="modal-overlay">
+  <div id="modal">
+
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="modal-title">Media Release & Consent Agreement</div>
+        <div class="modal-sub">SANECA TV LLC · Read to the bottom to sign</div>
+      </div>
+      <button class="close-btn" onclick="closeModal()" aria-label="Close">✕</button>
+    </div>
+
+    <div class="scroll-hint" id="scroll-hint">
+      ↓ Scroll to the bottom to unlock your signature
+    </div>
+
+    <!-- WAIVER TEXT -->
+    <div class="waiver-body" id="waiver-body" onscroll="checkScroll()">
+
+      <div class="waiver-logo">
+        <div class="waiver-logo-name">SANECA TV</div>
+        <div class="waiver-logo-sub">G4E Movement Studio · Lithonia, GA</div>
+      </div>
+
+      <div class="waiver-doc-title">Audio & Video Media Release Agreement</div>
+      <div class="waiver-doc-sub">Effective date of signature below</div>
+
+      <div class="waiver-section">
+        <div class="waiver-section-num">Section 01</div>
+        <h3>Parties</h3>
+        <p>This Media Release and Consent Agreement ("Agreement") is entered into between <strong>STV Radiomeltdown / G4E Movement Studio</strong> ("Producer"), located in Lithonia, Georgia, and the individual signing below ("Guest" or "Participant").</p>
+      </div>
+
+      <hr class="waiver-divider"/>
+
+      <div class="waiver-section">
+        <div class="waiver-section-num">Section 02</div>
+        <h3>Grant of Rights</h3>
+        <p>Guest grants Producer the irrevocable, worldwide, royalty-free right and license to record, use, reproduce, edit, distribute, broadcast, stream, and otherwise exploit Guest's name, likeness, image, voice, and performance captured during the session ("Content") in any and all media now known or hereafter devised, including but not limited to radio broadcast, podcast distribution, YouTube, social media platforms, website publication, and promotional materials.</p>
+        <p>This grant includes the right to use clips or excerpts of the Content in promotional material, show highlights, trailers, or advertising without additional compensation or approval from Guest.</p>
+      </div>
+
+      <hr class="waiver-divider"/>
+
+      <div class="waiver-section">
+        <div class="waiver-section-num">Section 03</div>
+        <h3>Editing & Modification</h3>
+        <p>Producer reserves the right to edit, crop, subtitle, add music or graphics to, translate, or otherwise modify the Content for any lawful purpose without altering the fundamental meaning of Guest's statements. Guest waives any right of approval over the final edited form of the Content.</p>
+      </div>
+
+      <hr class="waiver-divider"/>
+
+      <div class="waiver-section">
+        <div class="waiver-section-num">Section 04</div>
+        <h3>Compensation</h3>
+        <p>Guest acknowledges that no monetary compensation is due for the rights granted herein, and that participation in the session and any agreed-upon promotional consideration constitute full and adequate consideration for this Agreement.</p>
+      </div>
+
+      <hr class="waiver-divider"/>
+
+      <div class="waiver-section">
+        <div class="waiver-section-num">Section 05</div>
+        <h3>Representations & Warranties</h3>
+        <p>Guest represents and warrants that: (a) Guest is at least 18 years of age or has obtained parental or guardian consent; (b) Guest has the full right and authority to enter into this Agreement; (c) Guest's participation will not violate any agreement Guest has with a third party; and (d) the Content will not contain any material that is defamatory, obscene, or unlawful.</p>
+      </div>
+
+      <hr class="waiver-divider"/>
+
+      <div class="waiver-section">
+        <div class="waiver-section-num">Section 06</div>
+        <h3>Indemnification</h3>
+        <p>Guest agrees to indemnify, defend, and hold harmless Producer, its officers, employees, and agents from any claims, liabilities, damages, or expenses (including reasonable attorneys' fees) arising from any breach of Guest's representations in this Agreement.</p>
+      </div>
+
+      <hr class="waiver-divider"/>
+
+      <div class="waiver-section">
+        <div class="waiver-section-num">Section 07</div>
+        <h3>Right to Decline</h3>
+        <p>Guest has the right to decline this Agreement. If Guest chooses not to grant the rights described above, STV Radiomeltdown will be unable to broadcast, publish, or distribute any audio or video from Guest's session. The session may still proceed at the Producer's discretion for internal or archival purposes only.</p>
+        <p>Guest understands that declining this Agreement will be noted in the production record and the session will be handled accordingly.</p>
+      </div>
+
+      <hr class="waiver-divider"/>
+
+      <div class="waiver-section">
+        <div class="waiver-section-num">Section 08</div>
+        <h3>Governing Law</h3>
+        <p>This Agreement shall be governed by the laws of the State of Georgia. Any disputes arising hereunder shall be resolved in the courts of DeKalb County, Georgia.</p>
+      </div>
+
+      <hr class="waiver-divider"/>
+
+      <div class="waiver-section">
+        <div class="waiver-section-num">Section 09</div>
+        <h3>Entire Agreement</h3>
+        <p>This Agreement constitutes the entire understanding between the parties with respect to its subject matter and supersedes all prior discussions. This Agreement may not be modified except in writing signed by both parties.</p>
+        <p style="margin-top:16px;color:var(--gold);font-weight:600;">You have reached the end of the agreement. Please make your selection below.</p>
+      </div>
+
+      <!-- spacer so content clears sticky bottom -->
+      <div style="height:12px;"></div>
+    </div><!-- /waiver-body -->
+
+    <!-- ── CONSENT ZONE ── -->
+    <div id="consent-zone">
+      <div class="consent-header">Your Response</div>
+
+      <div class="choice-grid">
+        <div class="choice-card" id="card-agree" onclick="selectChoice('agree')">
+          <div class="choice-radio" id="radio-agree">✓</div>
+          <div class="choice-label">I Agree</div>
+          <div class="choice-desc">Grant STV full rights to use audio & video from my session.</div>
+        </div>
+        <div class="choice-card" id="card-decline" onclick="selectChoice('decline')">
+          <div class="choice-radio" id="radio-decline">✕</div>
+          <div class="choice-label">I Decline</div>
+          <div class="choice-desc">Do not broadcast or publish audio or video from my session.</div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label" for="f-first">First Name</label>
+          <input class="field-input" id="f-first" type="text" placeholder="First" oninput="updateSubmit()"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="f-last">Last Name</label>
+          <input class="field-input" id="f-last" type="text" placeholder="Last" oninput="updateSubmit()"/>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="f-notes">Notes (optional)</label>
+        <textarea class="notes-area" id="f-notes" placeholder="Any conditions, restrictions, or comments…"></textarea>
+      </div>
+
+      <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">Select an option above to continue</button>
+      <div class="err-bar" id="err-bar"></div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div id="success-screen">
+      <div class="success-icon" id="success-icon"></div>
+      <h2 id="success-title"></h2>
+      <p id="success-msg"></p>
+      <div class="flag-notice" id="flag-notice" style="display:none;">
+        ⚠️ This guest has <strong>declined</strong> media release. Their name has been flagged for the production team.
+        <div class="flag-name" id="flag-name"></div>
+      </div>
+    </div>
+
+  </div><!-- /modal -->
+</div><!-- /overlay -->
+
+<script>
+let currentChoice = null;
+
+function openModal() {
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // reset scroll
+  document.getElementById('waiver-body').scrollTop = 0;
+  document.getElementById('consent-zone').classList.remove('visible');
+  document.getElementById('scroll-hint').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function checkScroll() {
+  const el = document.getElementById('waiver-body');
+  const scrolled = el.scrollTop + el.clientHeight >= el.scrollHeight - 40;
+  if (scrolled) {
+    document.getElementById('consent-zone').classList.add('visible');
+    document.getElementById('scroll-hint').style.display = 'none';
+  }
+}
+
+// On mobile the waiver-body may not scroll (max-height:none). Reveal consent after a delay.
+window.addEventListener('load', () => {
+  if (window.innerWidth <= 720) {
+    // On mobile, watch for bottom of waiver-body in viewport
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        document.getElementById('consent-zone').classList.add('visible');
+        document.getElementById('scroll-hint').style.display = 'none';
+      }
+    }, { threshold: 0.5 });
+    // observe the last section heading
+    const sections = document.querySelectorAll('.waiver-section');
+    if (sections.length) observer.observe(sections[sections.length - 1]);
+  }
+});
+
+function selectChoice(choice) {
+  currentChoice = choice;
+  document.getElementById('card-agree').classList.remove('selected-agree');
+  document.getElementById('card-decline').classList.remove('selected-decline');
+  if (choice === 'agree') {
+    document.getElementById('card-agree').classList.add('selected-agree');
+  } else {
+    document.getElementById('card-decline').classList.add('selected-decline');
+  }
+  updateSubmit();
+}
+
+function updateSubmit() {
+  const btn = document.getElementById('submit-btn');
+  const first = document.getElementById('f-first').value.trim();
+  const last = document.getElementById('f-last').value.trim();
+  const ready = currentChoice && first && last;
+
+  btn.classList.remove('ready-agree','ready-decline');
+  if (!ready) {
+    btn.textContent = 'Fill in your name to continue';
+    return;
+  }
+  if (currentChoice === 'agree') {
+    btn.classList.add('ready-agree');
+    btn.textContent = '✓ Sign & Submit Agreement';
+  } else {
+    btn.classList.add('ready-decline');
+    btn.textContent = '✕ Submit — I Decline';
+  }
+}
+
+async function handleSubmit() {
+  const first = document.getElementById('f-first').value.trim();
+  const last  = document.getElementById('f-last').value.trim();
+  const notes = document.getElementById('f-notes').value.trim();
+  const btn   = document.getElementById('submit-btn');
+  const errBar= document.getElementById('err-bar');
+
+  if (!currentChoice || !first || !last) return;
+
+  btn.classList.remove('ready-agree','ready-decline');
+  btn.classList.add('sending');
+  btn.textContent = 'Submitting…';
+  errBar.classList.remove('visible');
+
+  const payload = {
+    guest_name:  `${first} ${last}`,
+    decision:    currentChoice === 'agree' ? 'AGREED — Full media rights granted' : '⚠️ DECLINED — No broadcast/publish rights',
+    flagged:     currentChoice === 'decline' ? 'YES — FLAG THIS GUEST' : 'No',
+    notes:       notes || '(none)',
+    submitted_at: new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' }),
+    subject:     currentChoice === 'agree'
+      ? `✅ Waiver SIGNED — ${first} ${last}`
+      : `⚠️ Waiver DECLINED — ${first} ${last} [FLAG]`
+  };
+
+  try {
+    if (xgobrgbd !== 'xgobrgbd') {
+      const res = await fetch(`https://formspree.io/f/${xgobrgbd}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) {
+        const d = await res.json();
+        throw new Error(d.error || 'Submit failed');
+      }
+    }
+    showSuccess(first, last, currentChoice);
+  } catch(err) {
+    btn.classList.remove('sending');
+    if (currentChoice === 'agree') btn.classList.add('ready-agree');
+    else btn.classList.add('ready-decline');
+    btn.textContent = currentChoice === 'agree' ? '✓ Sign & Submit Agreement' : '✕ Submit — I Decline';
+    errBar.textContent = 'Could not send. Please try again or contact our team.';
+    errBar.classList.add('visible');
+  }
+}
+
+function showSuccess(first, last, choice) {
+  // Hide form sections
+  document.querySelector('.waiver-body').style.display = 'none';
+  document.getElementById('consent-zone').style.display = 'none';
+  document.getElementById('scroll-hint').style.display = 'none';
+
+  const screen = document.getElementById('success-screen');
+  const icon = document.getElementById('success-icon');
+  const title = document.getElementById('success-title');
+  const msg = document.getElementById('success-msg');
+  const flagNotice = document.getElementById('flag-notice');
+  const flagName = document.getElementById('flag-name');
+
+  if (choice === 'agree') {
+    icon.textContent = '✓';
+    icon.className = 'success-icon agreed';
+    title.textContent = 'Signed. Thank you.';
+    msg.textContent = `${first} ${last}, your media release is on file with Saneca TV and the XOCO Network. We're good to go — see you on air.`;
+    flagNotice.style.display = 'none';
+  } else {
+    icon.textContent = '✕';
+    icon.className = 'success-icon declined';
+    title.textContent = 'Response Recorded.';
+    msg.textContent = `${first} ${last}, your decision to decline has been sent to our team. No audio or video from your session will be published without a new signed agreement.`;
+    flagNotice.style.display = 'block';
+    flagName.innerHTML = `🚩 ${first.toUpperCase()} ${last.toUpperCase()}`;
+  }
+
+  screen.classList.add('visible');
+}
+</script>
+</body>
+</html>
